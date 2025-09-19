@@ -1,0 +1,210 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  /* Variables y estilos generales */
+  :root {
+    --bg-color: #eef2f7;
+    --header-bg: #004080;
+    --header-text: #ffffff;
+    --card-bg: #ffffff;
+    --primary-color: #004080;
+    --secondary-color: #0066cc;
+    --text-color: #333;
+    --muted-color: #6b7280;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  /* Estructura principal */
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+  }
+
+  header p {
+    margin: 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  section {
+    margin: 30px auto;
+    padding: 2rem;
+    max-width: 900px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+  }
+
+  h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Formulario y botones */
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--primary-color);
+    color: var(--header-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background: var(--secondary-color);
+  }
+
+  #registroExitoso button {
+    margin-top: 1rem;
+  }
+
+  /* Secciones ocultas */
+  #registro-empresa, #cursoCapacitacion {
+    display: block; /* Estos estilos se controlan con JS */
+  }
+
+  .seccion-oculta {
+    display: none;
+  }
+
+  /* Lista y checklist */
+  ul, ol {
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8f9fc;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .checklist-item input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    transform: scale(1.2);
+  }
+
+  .checklist-item label {
+    flex-grow: 1;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .checklist-item button {
+    width: auto;
+    padding: 6px 12px;
+    margin: 0;
+    background-color: #dc3545;
+    transition: background-color 0.3s ease;
+  }
+
+  .checklist-item button:hover {
+    background-color: #c82333;
+  }
+
+  /* Quiz */
+  .quiz-question {
+    background: #f8f9fc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+
+  .quiz-question strong {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .quiz-question div {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .quiz-question div:hover {
+    background-color: #eef2f7;
+  }
+
+  .quiz-question div.selected {
+    background-color: #d4edda;
+    border-color: #28a745;
+    font-weight: 600;
+  }
+
+  #quiz-result {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  /* Certificado */
+  #certificate {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f7f9fc;
+    border: 2px dashed var(--primary-color);
+  }
+  #certificate h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+</style>

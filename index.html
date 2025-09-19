@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Capacitación ISO 9001 — Curso y Checklist</title>
+    <meta name="description" content="Curso interactivo ISO 9001 con checklist, quiz y recursos para despliegue."/>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        /* Variables y estilos generales */
+        :root {
+            --bg-color: #eef2f7;
+            --header-bg: #004080;
+            --header-text: #ffffff;
+            --card-bg: #ffffff;
+            --primary-color: #004080;
+            --secondary-color: #0066cc;
+            --text-color: #333;
+            --muted-color: #6b7280;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Estructura principal y animaciones */
+        section {
+            margin: 30px auto;
+            padding: 2rem;
+            max-width: 900px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(18px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Formulario y botones */
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            background: var(--primary-color);
+            color: var(--header-text);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        #registroExitoso button {
+            margin-top: 1rem;
+        }
+        
+        /* Secciones ocultas */
+        .seccion-oculta {
+            display: none;
+        }
+        
+        /* Lista y checklist */
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8f9fc;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .checklist-item:hover {
+            background-color: #eef2f7;
+            transform: translateX(5px);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            transform: scale(1.2);
+        }
+
+        .checklist-item label {
+            flex-grow: 1;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .checklist-item button {
+            width: auto;
+            padding: 6px 12px;
+            margin: 0;
+            background-color: #dc3545;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .checklist-item button:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        /* Quiz */
+        .quiz-question {
+            background: #f8f9fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .quiz-question:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .quiz-question strong {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .quiz-question div {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .quiz-question div:hover {
+            background-color: #eef2f7;
+            transform: translateY(-2px);
+        }
+
+        .quiz-question div.selected {
+            background-color: #d4edda;
+            border-color: #28a745;
+            font-weight: 600;
+            animation: popIn 0.3s forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #quiz-result {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Certificado */
+        #certificate {
+            text-align: center;
+            padding: 2rem;
+            background-color: #f7f9fc;
+            border: 2px dashed var(--primary-color);
+            transition: transform 0.5s ease-in-out;
+            animation: bounceIn 1s forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #certificate h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* Enlaces de navegación */
+        .nav-button {
+            width:auto; 
+            margin:0 5px; 
+            background: var(--primary-color); 
+            color:white; 
+            text-decoration:none; 
+            padding:12px 20px; 
+            border-radius:8px; 
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <section id="registro-empresa">
+        <h2>Registro de Empresa</h2>
+        <form id="formRegistro">
+            <label>Nombre de la empresa:</label>
+            <input type="text" id="empresa" required>
+            <label>NIT / Identificación:</label>
+            <input type="text" id="nit" required>
+            <label>Sector:</label>
+            <input type="text" id="sector" required>
+            <label>Nombre del representante:</label>
+            <input type="text" id="representante" required>
+            <label>Correo electrónico:</label>
+            <input type="email" id="correo" required>
+            <label>Número de empleados:</label>
+            <input type="number" id="empleados" required>
+            <button type="submit">Registrar</button>
+        </form>
+
+        <div id="registroExitoso" class="seccion-oculta" style="margin-top:15px;">
+            <h3>✅ Registro exitoso</h3>
+            <p>Bienvenido <span id="empresaGuardada"></span> al curso de Capacitación ISO 9001.</p>
+            <button onclick="iniciarCapacitacion()">Iniciar capacitación</button>
+        </div>
+    </section>
+
+    <div id="cursoCapacitacion" class="seccion-oculta">
+        <header>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b63d6'/%3E%3Ctext x='50%25' y='58%25' font-size='12' font-family='Arial' text-anchor='middle' fill='white'%3EQ%3C/text%3E%3C/svg%3E" alt="logo">
+            <div>
+                <h1>Capacitación ISO 9001 — Curso y Checklist</h1>
+                <p>Incluye checklist, exportable, quiz con certificado y recursos para despliegue.</p>
+            </div>
+            <div>
+                <button onclick="exportAll()">Exportar checklist (CSV)</button>
+                <button onclick="resetChecklist()">Reset checklist</button>
+            </div>
+        </header>
+        
+        <nav style="text-align:center; padding:15px; background:#fff; border-radius:12px; margin:20px auto; max-width:900px; box-shadow:var(--shadow)">
+            <a href="#contenido" class="nav-button">Contenido</a>
+            <a href="#checklist" class="nav-button">Checklist</a>
+            <a href="#quiz" class="nav-button">Quiz</a>
+            <a href="#recursos" class="nav-button">Recursos</a>
+        </nav>
+
+        <main>
+            <section id="contenido">
+                <h2>Contenido del curso</h2>
+                <div id="mod-1">
+                    <h3>Módulo 1 — Introducción a ISO 9001</h3>
+                    <p>Contexto, beneficios y estructura de alto nivel.</p>
+                    <ul>
+                        <li>Historia y evolución</li>
+                        <li>Principios de la gestión de calidad</li>
+                    </ul>
+                </div>
+                <div id="mod-2">
+                    <h3>Módulo 2 — Requisitos clave</h3>
+                    <p>Cláusulas principales y su interpretación práctica.</p>
+                    <ul>
+                        <li>Contexto de la organización (4)</li>
+                        <li>Liderazgo (5) y planificación (6)</li>
+                        <li>Operación (8) y soporte (7)</li>
+                        <li>Evaluación del desempeño (9) y mejora (10)</li>
+                    </ul>
+                </div>
+                <div id="mod-3">
+                    <h3>Módulo 3 — Implementación práctica</h3>
+                    <p>Cómo iniciar, priorizar y documentar.</p>
+                    <ol>
+                        <li>Diagnóstico y mapa de procesos</li>
+                        <li>Definición de alcance y política</li>
+                        <li>Registros, procedimientos y responsabilidades</li>
+                    </ol>
+                </div>
+                <div id="mod-4">
+                    <h3>Módulo 4 — Auditoría y mejora</h3>
+                    <p>Preparación de auditorías, no conformidades y acciones correctivas.</p>
+                </div>
+                <hr>
+                <section id="recursos">
+                    <h3>Recursos y plantillas</h3>
+                    <ul>
+                        <li><a href="#">Plantilla: Política de Calidad (DOCX)</a></li>
+                        <li><a href="#">Checklist de Auditoría Interna (XLSX)</a></li>
+                        <li><a href="#">Ejemplo: Informe de No Conformidad (PDF)</a></li>
+                    </ul>
+                    <p>(Reemplaza los enlaces con tus archivos o rutas internas.)</p>
+                </section>
+            </section>
+
+            <section id="checklist">
+                <h2>Checklist de verificación (guardado local)</h2>
+                <p>Marca los ítems y guarda el estado en tu navegador. También puedes exportar como CSV.</p>
+                <div id="checklist-list"></div>
+                <div>
+                    <button onclick="addCustomItem()">Añadir ítem</button>
+                    <button onclick="saveChecklist()">Guardar (local)</button>
+                    <button onclick="exportChecklist()">Exportar visible (CSV)</button>
+                    <button onclick="openNotes()">Notas de auditoría</button>
+                </div>
+                <div id="notes" class="seccion-oculta">
+                    <h4>Notas de auditoría</h4>
+                    <textarea id="audit-notes" placeholder="Escribe observaciones..."></textarea>
+                    <div><button onclick="saveNotes()">Guardar notas</button></div>
+                </div>
+            </section>
+
+            <section id="quiz">
+                <h2>Quiz: Comprueba tus conocimientos</h2>
+                <p>Responde y, si alcanzas 60% o más, genera certificado.</p>
+                <div id="quiz-area">
+                    </div>
+                <div>
+                    <button onclick="submitQuiz()">Enviar respuestas</button>
+                    <div id="quiz-result"></div>
+                </div>
+                <div id="certificate" class="seccion-oculta">
+                    <div>
+                        <h3>Certificado de participación</h3>
+                        <p id="cert-name">Nombre: —</p>
+                        <p id="cert-score">Puntaje: —</p>
+                        <p>Imprime o guarda esta sección como PDF.</p>
+                        <div><button onclick="window.print()">Imprimir / Guardar PDF</button></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <aside style="text-align:center; padding:15px; background:#fff; border-radius:12px; margin:20px auto; max-width:900px; box-shadow:var(--shadow)">
+            <h3>Información adicional</h3>
+            <p>Este curso fue diseñado para ser un recurso simple y portable.</p>
+            <p>Se puede desplegar en cualquier servidor estático como GitHub Pages o Netlify.</p>
+        </aside>
+
+        <footer>
+            © Curso ISO 9001 • Generado automáticamente • Versión: 2.1
+        </footer>
+    </div>
+
+    <script>
+        // Funciones del formulario de registro
+        document.getElementById("formRegistro").addEventListener("submit", function(e){
+            e.preventDefault();
+            const registro = {
+                empresa: document.getElementById("empresa").value,
+                nit: document.getElementById("nit").value,
+                sector: document.getElementById("sector").value,
+                representante: document.getElementById("representante").value,
+                correo: document.getElementById("correo").value,
+                empleados: document.getElementById("empleados").value
+            };
+            localStorage.setItem("registroEmpresa", JSON.stringify(registro));
+            document.getElementById("empresaGuardada").textContent = registro.empresa;
+            document.getElementById("formRegistro").style.display = "none";
+            document.getElementById("registroExitoso").style.display = "block";
+        });
+
+        function iniciarCapacitacion(){
+            document.getElementById("registro-empresa").style.display = "none";
+            document.getElementById("cursoCapacitacion").style.display = "block";
+        }
+
+        // Funciones del checklist y quiz
+        const DEFAULT_CHECKLIST = [
+            {id: 'cl1', text: 'La política de calidad está documentada y comunicada.', done:false},
+            {id: 'cl2', text: 'Los objetivos de calidad son medibles y están actualizados.', done:false},
+            {id: 'cl3', text: 'Se han identificado y evaluado riesgos y oportunidades.', done:false},
+            {id: 'cl4', text: 'Existen registros de capacitación del personal.', done:false},
+            {id: 'cl5', text: 'Se realizan auditorías internas periódicas.', done:false},
+            {id: 'cl6', text: 'Se aplican acciones correctivas y se verifican sus resultados.', done:false},
+            {id: 'cl7', text: 'Indicadores de desempeño son monitoreados y analizados.', done:false},
+            {id: 'cl8', text: 'Existe un plan de mejora continua actualizado.', done:false}
+        ];
+        function loadChecklist(){
+            const raw = localStorage.getItem('iso_checklist_v2');
+            try{
+                if(raw){return JSON.parse(raw);} else {return DEFAULT_CHECKLIST.slice();}
+            }catch(e){return DEFAULT_CHECKLIST.slice();}
+        }
+        function renderChecklist(){
+            const list = document.getElementById('checklist-list');
+            list.innerHTML='';
+            const items = loadChecklist();
+            items.forEach(item=>{
+                const div = document.createElement('div'); div.classList.add('checklist-item');
+                const cb = document.createElement('input'); cb.type='checkbox'; cb.id=item.id; cb.checked=!!item.done;
+                cb.addEventListener('change',()=>{toggleItem(item.id, cb.checked)});
+                const label = document.createElement('label'); label.htmlFor=item.id; label.textContent=item.text;
+                const del = document.createElement('button'); del.textContent='Eliminar'; del.onclick=()=>{deleteItem(item.id)};
+                div.appendChild(cb); div.appendChild(label); div.appendChild(del);
+                list.appendChild(div);
+            });
+        }
+        function saveChecklist(){
+            const items = loadChecklist();
+            localStorage.setItem('iso_checklist_v2', JSON.stringify(items));
+            alert('Checklist guardado en este navegador.');
+        }
+        function toggleItem(id, val){
+            const items = loadChecklist();
+            const found = items.map(i=> i.id===id? {...i, done:val}: i);
+            localStorage.setItem('iso_checklist_v2', JSON.stringify(found));
+            renderChecklist();
+        }
+        function addCustomItem(){
+            const text = prompt('Texto del nuevo ítem:'); if(!text) return;
+            const items = loadChecklist();
+            const id = 'cl'+Date.now(); items.push({id,text,done:false});
+            localStorage.setItem('iso_checklist_v2', JSON.stringify(items)); renderChecklist();
+        }
+        function deleteItem(id){
+            if(!confirm('Eliminar ítem?')) return; const items = loadChecklist().filter(i=>i.id!==id); localStorage.setItem('iso_checklist_v2', JSON.stringify(items)); renderChecklist();
+        }
+        function exportChecklist(){
+            const items = loadChecklist();
+            let csv = 'id,text,done\n';
+            items.forEach(i=>{csv+=`"${i.id}","${i.text.replace(/\"/g,'""')}",${i.done}\n`;});
+            const blob = new Blob([csv],{type:'text/csv'}); const url=URL.createObjectURL(blob);
+            const a=document.createElement('a'); a.href=url; a.download='checklist_iso9001.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+        }
+        function exportAll(){
+            exportChecklist();
+        }
+        function resetChecklist(){
+            if(!confirm('Restablecer checklist por defecto? Se perderán cambios.')) return; localStorage.removeItem('iso_checklist_v2'); renderChecklist();
+        }
+        function openNotes(){document.getElementById('notes').style.display = 'block';}
+        function saveNotes(){const text=document.getElementById('audit-notes').value; localStorage.setItem('iso_notes_v2', text); alert('Notas guardadas.');}
+        
+        // Load saved notes
+        document.addEventListener('DOMContentLoaded',()=>{
+            const notes = localStorage.getItem('iso_notes_v2'); if(notes) document.getElementById('audit-notes').value = notes;
+            if(!localStorage.getItem('iso_checklist_v2')) localStorage.setItem('iso_checklist_v2', JSON.stringify(DEFAULT_CHECKLIST));
+            renderChecklist();
+            renderQuiz();
+        });
+
+        const QUIZ = [
+            {q:'¿Qué representa ISO 9001?', opts:['Un estándar para seguridad de la información','Un estándar para gestión de calidad','Un método de manufactura'], a:1},
+            {q:'¿Qué cláusula trata sobre liderazgo?', opts:['4','5','8'], a:1},
+            {q:'¿Qué herramienta es útil para analizar causa raíz?', opts:['Diagrama de Ishikawa','Matriz BCG','Análisis PEST'], a:0},
+            {q:'¿Qué significa PDCA?', opts:['Plan–Do–Check–Act','Plan–Design–Control–Adjust','Produce–Deliver–Control–Audit'], a:0},
+            {q:'Resultado esperado de aplicar ISO 9001', opts:['Mayor satisfacción del cliente','Eliminación total de errores','Menor rotación de personal siempre'], a:0}
+        ];
+        function renderQuiz(){
+            const area = document.getElementById('quiz-area'); area.innerHTML='';
+            QUIZ.forEach((item,i)=>{
+                const qdiv = document.createElement('div'); qdiv.classList.add('quiz-question'); qdiv.dataset.index=i;
+                const strong = document.createElement('strong'); strong.textContent=(i+1)+'. '+item.q; qdiv.appendChild(strong);
+                item.opts.forEach((opt,j)=>{
+                    const o = document.createElement('div'); o.textContent=opt; o.onclick=()=>{ selectOption(i,j); renderSelected(i,j); };
+                    o.dataset.opt=j; qdiv.appendChild(o);
+                });
+                area.appendChild(qdiv);
+            });
+        }
+        
+        const selected = Array(QUIZ.length).fill(null);
+        function selectOption(qIndex,optIndex){ selected[qIndex]=optIndex; }
+        
+        function renderSelected(qIndex,optIndex){ 
+            const q = document.querySelectorAll('.quiz-question')[qIndex]; 
+            q.querySelectorAll('div').forEach((el,i)=> { 
+                if(i===optIndex) el.classList.add('selected'); 
+                else el.classList.remove('selected'); 
+            }); 
+        }
+
+        function submitQuiz(){
+            let unanswered = selected.filter(s=>s===null).length;
+            if(unanswered>0){ if(!confirm('No has respondido todas las preguntas. Enviar de todas formas?')) return; }
+            let score=0; for(let i=0;i<QUIZ.length;i++){ if(selected[i]===QUIZ[i].a) score++; }
+            const percent = Math.round((score/QUIZ.length)*100);
+            document.getElementById('quiz-result').textContent = `Obtuviste ${score} de ${QUIZ.length} (${percent}%).`;
+            if(percent>=60){
+                const name = prompt('Nombre para el certificado (o deja vacío):');
+                document.getElementById('cert-name').textContent = 'Nombre: ' + (name||'—');
+                document.getElementById('cert-score').textContent = 'Puntaje: ' + percent + '%';
+                document.getElementById('certificate').style.display = 'block'; document.getElementById('certificate').scrollIntoView({behavior:'smooth'});
+            } else { alert('Puntaje insuficiente para certificado. Repasa los módulos y vuelve a intentar.'); }
+        }
+        
+        function saveChecklistState(){
+            const items = loadChecklist();
+            items.forEach(i=>{ const cb = document.getElementById(i.id); if(cb) i.done = cb.checked; });
+            localStorage.setItem('iso_checklist_v2', JSON.stringify(items));
+        }
+        window.addEventListener('beforeunload', saveChecklistState);
+        function exportVisible(){ exportChecklist(); }
+    </script>
+</body>
+</html>
