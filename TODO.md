@@ -1,0 +1,5 @@
+- [x] Enhance design of documents for download section
+  - [x] Add card-style layout for each document link
+  - [x] Include Excel icon for each download link
+  - [x] Add hover effects and improved spacing
+- [ ] Test the visual changes
