@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Auditoría ISO 9001</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="cursoCapacitacion">
+        <header>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b63d6'/%3E%3Ctext x='50%25' y='58%25' font-size='12' font-family='Arial' text-anchor='middle' fill='white'%3EQ%3C/text%3E" alt="logo">
+            <div>
+                <h1>Auditoría ISO 9001</h1>
+                <p>Recursos para auditorías internas y externas.</p>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h2>Documentos de Auditoría ISO 9001</h2>
+                <p>Aquí encontrarás recursos y plantillas para realizar auditorías internas y externas según ISO 9001.</p>
+                <ul class="document-grid">
+                    <li class="document-item">
+                        <a href="documentosiso9001/5.+Gestión+de+un+programa+de+auditoría+-+Formato.xlsx" download><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;"><path d="M14 2H6C4.9 2 4.01 2.9 4.01 4L4 20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z" fill="#4CAF50"/></svg>Gestión de un programa de auditoría</a>
+                        <br>
+                        <input type="file" accept=".xlsx,.pdf,.docx" style="margin-top: 5px;">
+                        <button onclick="uploadFile(this)" style="margin-top: 5px;">Subir Archivo Modificado</button>
+                        <div class="uploaded-files-for-doc"></div>
+                    </li>
+                    <li class="document-item">
+                        <a href="documentosiso9001/6.+Informe+de+auditoría+-+Formato.xlsx" download><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;"><path d="M14 2H6C4.9 2 4.01 2.9 4.01 4L4 20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z" fill="#4CAF50"/></svg>Informe de auditoría</a>
+                        <br>
+                        <input type="file" accept=".xlsx,.pdf,.docx" style="margin-top: 5px;">
+                        <button onclick="uploadFile(this)" style="margin-top: 5px;">Subir Archivo Modificado</button>
+                        <div class="uploaded-files-for-doc"></div>
+                    </li>
+                    <li class="document-item">
+                        <a href="documentosiso9001/9.2.+Auditoría+Interna+-+Formato.xlsx" download><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;"><path d="M14 2H6C4.9 2 4.01 2.9 4.01 4L4 20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z" fill="#4CAF50"/></svg>Auditoría Interna</a>
+                        <br>
+                        <input type="file" accept=".xlsx,.pdf,.docx" style="margin-top: 5px;">
+                        <button onclick="uploadFile(this)" style="margin-top: 5px;">Subir Archivo Modificado</button>
+                        <div class="uploaded-files-for-doc"></div>
+                    </li>
+                    <li class="document-item">
+                        <a href="documentosiso9001/5.1.+Check+list+Liderazgo+Actual+Formato.xlsx" download><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;"><path d="M14 2H6C4.9 2 4.01 2.9 4.01 4L4 20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z" fill="#4CAF50"/></svg>Checklist Liderazgo</a>
+                        <br>
+                        <input type="file" accept=".xlsx,.pdf,.docx" style="margin-top: 5px;">
+                        <button onclick="uploadFile(this)" style="margin-top: 5px;">Subir Archivo Modificado</button>
+                        <div class="uploaded-files-for-doc"></div>
+                    </li>
+                </ul>
+            </section>
+
+            <div id="uploaded-files"></div>
+        </main>
+
+        <footer>
+            © Auditoría ISO 9001 • Recursos disponibles
+        </footer>
+    </div>
+</body>
+</html>

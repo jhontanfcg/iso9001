@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Evaluación de Auditoría ISO 9001</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="cursoCapacitacion">
+        <header>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b63d6'/%3E%3Ctext x='50%25' y='58%25' font-size='12' font-family='Arial' text-anchor='middle' fill='white'%3EQ%3C/text%3E%3C/svg%3E" alt="logo">
+            <div>
+                <h1>Evaluación de Auditoría ISO 9001</h1>
+                <p>Herramientas para evaluar y mejorar auditorías.</p>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h2>Documentos de Evaluación de Auditoría ISO 9001</h2>
+                <p>Recursos para la evaluación y mejora de procesos de auditoría según ISO 9001.</p>
+                <ul>
+                    <li><a href="documentosiso9001/9.3.+Revisión+por+la+Dirección+-+Formato.xlsx" download>Revisión por la Dirección</a></li>
+                    <li><a href="documentosiso9001/10.2.+No+conformidad+y+acción+correctiva+-++Formato.xlsx" download>No conformidad y acción correctiva</a></li>
+                    <li><a href="documentosiso9001/9.1.+Seguimiento,+medición,+análisis+y+evaluación++-+Formato.xlsx" download>Seguimiento, medición, análisis y evaluación</a></li>
+                </ul>
+                <button onclick="exportChecklistEvaluation()">Descargar Checklist de Evaluación</button>
+            </section>
+
+            <section id="uploaded-files-evaluation">
+                <h2>Archivos Subidos para Evaluación</h2>
+                <p>Aquí se muestran los archivos subidos en la sección de auditoría para su evaluación.</p>
+                <div id="uploaded-files-list"></div>
+            </section>
+        </main>
+
+        <footer>
+            © Evaluación de Auditoría ISO 9001 • Recursos disponibles
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUploadedFilesForEvaluation();
+        });
+
+        const expectedDocuments = [
+            'Gestión de un programa de auditoría',
+            'Informe de auditoría',
+            'Auditoría Interna',
+            'Checklist Liderazgo'
+        ];
+
+        function loadUploadedFilesForEvaluation() {
+            const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+            const uploadedFilesList = document.getElementById('uploaded-files-list');
+
+            uploadedFilesList.innerHTML = '<ul class="uploaded-files-evaluation-list"></ul>';
+            const ul = uploadedFilesList.querySelector('ul');
+
+            expectedDocuments.forEach(documentName => {
+                const uploadedFile = uploadedFiles.find(file => file.documentName === documentName);
+                const li = document.createElement('li');
+                li.className = 'uploaded-file-item';
+
+                if (uploadedFile) {
+                    li.innerHTML = `
+                        <div class="file-info">
+                            <strong>${documentName}</strong> - ${uploadedFile.fileName} (${(uploadedFile.fileSize / 1024).toFixed(2)} KB)
+                            <button onclick="downloadFile('${uploadedFile.dataURL}', '${uploadedFile.fileName}')" style="margin-left: 10px; background: none; border: none; color: #0b63d6; cursor: pointer; text-decoration: underline;">Descargar</button>
+                        </div>
+                        <div class="evaluation-checklist">
+                            <label><input type="radio" name="evaluation-${documentName.replace(/\s+/g, '-')}" value="aplica" onchange="saveEvaluation('${documentName}', 'aplica')"> Aplica</label>
+                            <label><input type="radio" name="evaluation-${documentName.replace(/\s+/g, '-')}" value="no-aplica" onchange="saveEvaluation('${documentName}', 'no-aplica')"> No aplica</label>
+                        </div>
+                    `;
+                } else {
+                    li.innerHTML = `
+                        <div class="file-info">
+                            <strong>${documentName}</strong> - El usuario no subió el archivo
+                        </div>
+                        <div class="evaluation-checklist">
+                            <label><input type="radio" name="evaluation-${documentName.replace(/\s+/g, '-')}" value="aplica" onchange="saveEvaluation('${documentName}', 'aplica')"> Aplica</label>
+                            <label><input type="radio" name="evaluation-${documentName.replace(/\s+/g, '-')}" value="no-aplica" onchange="saveEvaluation('${documentName}', 'no-aplica')"> No aplica</label>
+                        </div>
+                    `;
+                }
+                ul.appendChild(li);
+            });
+
+            // Load saved evaluations
+            loadSavedEvaluations();
+        }
+
+        function saveEvaluation(documentName, value) {
+            let evaluations = JSON.parse(localStorage.getItem('fileEvaluations')) || {};
+            evaluations[documentName] = value;
+            localStorage.setItem('fileEvaluations', JSON.stringify(evaluations));
+
+            // Update label colors
+            updateLabelColors(documentName, value);
+        }
+
+        function loadSavedEvaluations() {
+            const evaluations = JSON.parse(localStorage.getItem('fileEvaluations')) || {};
+            Object.keys(evaluations).forEach(documentName => {
+                const radio = document.querySelector(`input[name="evaluation-${documentName.replace(/\s+/g, '-')}"][value="${evaluations[documentName]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    updateLabelColors(documentName, evaluations[documentName]);
+                }
+            });
+        }
+
+        function updateLabelColors(documentName, value) {
+            const labels = document.querySelectorAll(`input[name="evaluation-${documentName.replace(/\s+/g, '-')}"]`);
+            const item = document.querySelector(`input[name="evaluation-${documentName.replace(/\s+/g, '-')}"]`).closest('.uploaded-file-item');
+            item.classList.remove('aplica', 'no-aplica');
+            if (value) {
+                item.classList.add(value);
+            }
+            labels.forEach(label => {
+                const parentLabel = label.parentElement;
+                parentLabel.classList.remove('aplica', 'no-aplica');
+                if (label.checked) {
+                    parentLabel.classList.add(value);
+                }
+            });
+        }
+
+        function downloadFile(dataURL, fileName) {
+            const byteString = atob(dataURL.split(',')[1]);
+            const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+            const blob = new Blob([ab], {type: mimeString});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        function exportChecklistEvaluation() {
+            const evaluations = JSON.parse(localStorage.getItem('fileEvaluations')) || {};
+            let csv = 'Documento,Evaluación\n';
+            expectedDocuments.forEach(doc => {
+                const evalValue = evaluations[doc] || 'No evaluado';
+                csv += `"${doc}","${evalValue}"\n`;
+            });
+            const blob = new Blob([csv], {type: 'text/csv'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'checklist-evaluacion-auditoria.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

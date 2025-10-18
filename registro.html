@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Registro de Empresa - Capacitación ISO 9001</title>
+    <meta name="description" content="Registro de empresa para la capacitación ISO 9001."/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="registro-empresa">
+        <h2>Registro de Empresa</h2>
+        <form id="formRegistro">
+            <label>Nombre de la empresa:</label>
+            <input type="text" id="nombre" required>
+            <label>Correo electrónico de contacto:</label>
+            <input type="email" id="correo" required>
+            <label>Contraseña:</label>
+            <input type="password" id="password" required>
+            <label>Confirmar contraseña:</label>
+            <input type="password" id="confirmPassword" required>
+            <label>Sector (opcional):</label>
+            <input type="text" id="empresa">
+            <label>Tamaño de la empresa (opcional):</label>
+            <input type="text" id="rol">
+            <button type="submit">Registrar</button>
+        </form>
+
+        <div id="registroExitoso" class="seccion-oculta" style="margin-top:15px;">
+            <h3>✅ Registro exitoso</h3>
+            <p>Bienvenido <span id="usuarioGuardado"></span> al curso de Capacitación ISO 9001.</p>
+            <button onclick="iniciarCapacitacion()">Iniciar capacitación</button>
+        </div>
+    </section>
+
+    <script>
+        // Funciones del formulario de registro
+        document.getElementById("formRegistro").addEventListener("submit", function(e){
+            e.preventDefault();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            if(password !== confirmPassword){
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+            const registro = {
+                nombre: document.getElementById("nombre").value,
+                correo: document.getElementById("correo").value,
+                password: password,
+                empresa: document.getElementById("empresa").value,
+                rol: document.getElementById("rol").value
+            };
+            localStorage.setItem("registroUsuario", JSON.stringify(registro));
+            document.getElementById("usuarioGuardado").textContent = registro.nombre;
+            document.getElementById("formRegistro").style.display = "none";
+            document.getElementById("registroExitoso").style.display = "block";
+        });
+
+        function iniciarCapacitacion(){
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
