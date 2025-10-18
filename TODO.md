@@ -34,6 +34,8 @@
 - [x] Agregar checklist debajo de cada archivo con opciones "Aplica" y "No aplica"
 - [x] Actualizar script.js: Agregar funcionalidad para guardar evaluaciones en localStorage
 - [x] Agregar enlace de descarga para archivos subidos en evaluacion-auditoria-9001.html
+- [x] Agregar login modal a evaluacion-auditoria-9001.html con credenciales jhonatan.cifuentes46@gmail.com / 12345678
+- [x] Actualizar styles.css con estilos para el modal de login
 - [ ] Probar la funcionalidad en ambas páginas
 
 ### Notas
@@ -41,3 +43,4 @@
 - Checklist con radio buttons para "Aplica" y "No aplica".
 - Archivos almacenados como data URLs para permitir descarga.
 - Cambios aplicados: Archivos se almacenan como data URLs en localStorage, y se muestran con enlaces de descarga en la página de evaluación.
+- Login modal agregado para proteger el acceso a la página de evaluación.

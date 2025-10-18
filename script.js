@@ -1,5 +1,9 @@
 
 
+function evaluar() {
+    window.location.href = 'evaluacion-auditoria-9001.html';
+}
+
 function uploadFile(button) {
     const li = button.parentElement;
     const fileInput = li.querySelector('input[type="file"]');
